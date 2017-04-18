@@ -44,6 +44,7 @@
 			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
 			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
 			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
 			</ul>
 		</div>
 	</div>
@@ -110,6 +111,7 @@
 <li><a class="reference internal" href="#annotations-router">注解路由（Annotations Router）</a></li>
 <li><a class="reference internal" href="#url-setting-url-generator">设置 URL 生成器（Setting URL Generator）</a></li>
 <li><a class="reference internal" href="#registering-router-instance">注册路由实例（Registering Router instance）</a></li>
+<li><a class="reference internal" href="#rest-rest-mode">REST 模式（REST Mode）</a></li>
 <li><a class="reference internal" href="#implementing-your-own-router">自定义路由（Implementing your own Router）</a></li>
 </ul>
 </li>
@@ -1355,6 +1357,16 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 <span class="p">);</span>
 
 <span class="k">return</span> <span class="nv">$router</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rest-rest-mode">
+<h2>REST 模式（REST Mode）<a class="headerlink" href="#rest-rest-mode" title="永久链接至标题">¶</a></h2>
+<p>当设置路由为 REST 模式时，会自动将 HTTP method 的值追加到 action 上：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">();</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setMode</span><span class="p">(</span><span class="nx">Phalcon\Router</span><span class="o">::</span><span class="na">MODE_REST</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

@@ -44,6 +44,7 @@
 			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
 			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
 			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
 			</ul>
 		</div>
 	</div>
@@ -241,6 +242,52 @@
 <p>在`apps/<cite>下的每一个目录都有自己的 MVC 结构。`Module.php</cite> 文件定义了各个模块不同的配置，如自动加载器、视图和自定义服务：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
+<span class="k">namespace</span> <span class="nx">Multiple\Frontend</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\DiInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\ModuleDefinitionInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Module</span> <span class="k">implements</span> <span class="nx">ModuleDefinitionInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 注册自定义加载器</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerAutoloaders</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Loader</span><span class="p">();</span>
+
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerNamespaces</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;Multiple\Frontend&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;../apps/frontend/crontollers&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;../apps/frontend/models&#39;</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 注册自定义服务</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerServices</span><span class="p">(</span><span class="nx">DiInterface</span> <span class="nv">$di</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Registering the view component</span>
+        <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
+            <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../apps/frontend/views/&#39;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
 <span class="k">namespace</span> <span class="nx">Multiple\Backend</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
@@ -345,11 +392,12 @@
     <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">registerModules</span><span class="p">(</span>
         <span class="k">array</span><span class="p">(</span>
             <span class="s1">&#39;frontend&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-                <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple\Frontend\Module&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;path&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;../apps/frontend/Module.php&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;namespaceName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple\Frontend&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;className&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Module&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;path&#39;</span>          <span class="o">=&gt;</span> <span class="s1">&#39;../apps/frontend/Module.php&#39;</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="s1">&#39;backend&#39;</span>  <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-                <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple\Backend\BackendModule&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple\Frontend\BackendModule&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;path&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;../apps/backend/Module.php&#39;</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">)</span>
