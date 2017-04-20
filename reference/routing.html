@@ -1367,6 +1367,11 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 
 <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">();</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setMode</span><span class="p">(</span><span class="nx">Phalcon\Router</span><span class="o">::</span><span class="na">MODE_REST</span><span class="p">);</span>
+
+    <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;POST&#39;</span><span class="p">;</span>
+    <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="s1">&#39;/posts/info&#39;</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">();</span> <span class="c1">// 这里将输出 infoPost，如果不开启 REST 模式，将返回 info</span>
 </pre></div>
 </div>
 </div>

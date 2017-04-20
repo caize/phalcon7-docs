@@ -103,18 +103,18 @@
 <li><a class="reference internal" href="#sum">累加（Sum）</a></li>
 <li><a class="reference internal" href="#average">平均（Average）</a></li>
 <li><a class="reference internal" href="#max-min">最大/最小（Max/Min）</a></li>
-<li><a class="reference internal" href="#create-update-with-confidence">创建与更新结果判断（Create/Update with Confidence）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-update-with-confidence">创建与更新结果判断（Create/Update with Confidence）</a><ul>
 <li><a class="reference internal" href="#validation-messages">验证信息（Validation Messages）</a></li>
-<li><a class="reference internal" href="#events-and-events-manager">事件与事件管理器（Events and Events Manager）</a></li>
+<li><a class="reference internal" href="#events-and-events-manager">模型事件与事件管理器（Events and Events Manager）</a></li>
 <li><a class="reference internal" href="#implementing-events-in-the-model-s-class">模型中自定义事件（Implementing Events in the Model&#8217;s class）</a></li>
 <li><a class="reference internal" href="#using-a-custom-events-manager">使用自定义事件管理器（Using a custom Events Manager）</a></li>
 <li><a class="reference internal" href="#implementing-a-business-rule">实现业务逻辑（Implementing a Business Rule）</a></li>
-<li><a class="reference internal" href="#validating-data-integrity">验证数据完整性（Validating Data Integrity）</a></li>
 <li><a class="reference internal" href="#sql-avoiding-sql-injections">防止 SQL 注入（Avoiding SQL injections）</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#deleting-records">删除记录（Deleting Records）</a></li>
-<li><a class="reference internal" href="#validation-failed-events">验证失败事件（Validation Failed Events）</a></li>
 <li><a class="reference internal" href="#use-dynamic-update">动态更新（Use Dynamic Update）</a></li>
 <li><a class="reference internal" href="#pointing-to-a-different-schema">设置模式（Pointing to a different schema）</a></li>
 <li><a class="reference internal" href="#sql-logging-low-level-sql-statements">记录底层 SQL 语句（Logging Low-Level SQL Statements）</a></li>
@@ -983,11 +983,10 @@ accessed:</p>
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="create-update-with-confidence">
-<h3>创建与更新结果判断（Create/Update with Confidence）<a class="headerlink" href="#create-update-with-confidence" title="永久链接至标题">¶</a></h3>
-<p>When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::save()</span></code> to persist the records in the database. If we want to be absolutely
-sure that a record is created or updated, we can change the <code class="code docutils literal"><span class="pre">save()</span></code> call with <code class="code docutils literal"><span class="pre">create()</span></code> or <code class="code docutils literal"><span class="pre">update()</span></code>:</p>
+<h2>创建与更新结果判断（Create/Update with Confidence）<a class="headerlink" href="#create-update-with-confidence" title="永久链接至标题">¶</a></h2>
+<p>当我们使用 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::save()</span></code> 保存数据时，可能是创建或者更新了一条数据。如果我们想确保使用创建或更新操作，需要使用 <code class="code docutils literal"><span class="pre">create()</span></code> 或 <code class="code docutils literal"><span class="pre">update()</span></code>：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span>       <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
@@ -1006,15 +1005,11 @@ sure that a record is created or updated, we can change the <code class="code do
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>These methods &#8220;create&#8221; and &#8220;update&#8221; also accept an array of values as parameter.</p>
-</div>
+<p>可以通过向方法 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::create()</span></code>、<code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::update()</span></code> 以及  and <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::save()</span></code> 传递数组来进行复制，我们也可以通过方法 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::assign()</span></code> 进行赋值。</p>
 <div class="section" id="validation-messages">
 <h3>验证信息（Validation Messages）<a class="headerlink" href="#validation-messages" title="永久链接至标题">¶</a></h3>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the insert/update processes.</p>
-<p>Each message consists of an instance of the class <a class="reference internal" href="../api/Phalcon_Validation_Message.html"><span class="doc">Phalcon\Mvc\Model\Message</span></a>. The set of
-messages generated can be retrieved with the <code class="code docutils literal"><span class="pre">getMessages()</span></code> method. Each message provides extended information like the field name that
-generated the message or the message type:</p>
+<p>模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 拥有有一个灵活的消息子系统，当插入或者更新数据发生错误时，会生成验证消息，通过 <code class="code docutils literal"><span class="pre">getMessages()</span></code> 方法返回。
+每条验证信息都是类 <a class="reference internal" href="../api/Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a> 的实例，包含了字段名、验证消息、类型等信息：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
@@ -1026,7 +1021,7 @@ generated the message or the message type:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> can generate the following types of validation messages:</p>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 默认情况下会根据字段类型以及数据库操作结果生成下列验证信息：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -1055,40 +1050,11 @@ generated the message or the message type:</p>
 </tr>
 </tbody>
 </table>
-<p>The <code class="code docutils literal"><span class="pre">getMessages()</span></code> method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getMessages</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="k">parent</span><span class="o">::</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">switch</span> <span class="p">(</span><span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">())</span> <span class="p">{</span>
-                <span class="k">case</span> <span class="s1">&#39;InvalidCreateAttempt&#39;</span><span class="o">:</span>
-                    <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;The record cannot be created because it already exists&#39;</span><span class="p">;</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="s1">&#39;InvalidUpdateAttempt&#39;</span><span class="o">:</span>
-                    <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;The record cannot be updated because it doesn\&#39;t exist&#39;</span><span class="p">;</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="s1">&#39;PresenceOf&#39;</span><span class="o">:</span>
-                    <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;The field &#39;</span> <span class="o">.</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getField</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39; is mandatory&#39;</span><span class="p">;</span>
-                    <span class="k">break</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span> <span class="nv">$messages</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<p>更多的模型验证相关的内容查看 <a class="reference internal" href="models-validation.html"><span class="doc">模型验证</span></a> 章节。</p>
 </div>
 <div class="section" id="events-and-events-manager">
-<h3>事件与事件管理器（Events and Events Manager）<a class="headerlink" href="#events-and-events-manager" title="永久链接至标题">¶</a></h3>
-<p>Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
-certain model. The following are the events supported by <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> and their order of execution:</p>
+<h3>模型事件与事件管理器（Events and Events Manager）<a class="headerlink" href="#events-and-events-manager" title="永久链接至标题">¶</a></h3>
+<p>模型允许我们定义事件的回调方法，通过它们帮助我们实现自己的业务逻辑。以下是模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 支持的事件和它们的执行顺序：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -1315,174 +1281,6 @@ from being exposed publicly.</p>
 <p>Some events return false as an indication to stop the current operation. If an event doesn&#8217;t return anything, <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>
 will assume a true value.</p>
 </div>
-<div class="section" id="validating-data-integrity">
-<h3>验证数据完整性（Validating Data Integrity）<a class="headerlink" href="#validating-data-integrity" title="永久链接至标题">¶</a></h3>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> provides several events to validate data and implement business rules. The special &#8220;validation&#8221;
-event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.</p>
-<p>The following example shows how to use it:</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\Uniqueness</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\InclusionIn</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">validation</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$validation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation</span><span class="p">;</span>
-
-        <span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">InclusionIn</span><span class="p">(</span>
-            <span class="k">array</span><span class="p">(</span>
-                <span class="s2">&quot;domain&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Mechanical&quot;</span><span class="p">,</span> <span class="s2">&quot;Virtual&quot;</span><span class="p">)</span>
-            <span class="p">)</span>
-        <span class="p">);</span>
-
-        <span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Uniqueness</span><span class="p">(</span>
-            <span class="k">array</span><span class="p">(</span>
-                <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;The robot name must be unique&quot;</span>
-            <span class="p">)</span>
-        <span class="p">);</span>
-
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="nv">$validation</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>The above example performs a validation using the built-in validator &#8220;InclusionIn&#8221;. It checks the value of the field &#8220;type&#8221; in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="6%" />
-<col width="67%" />
-<col width="27%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Explanation</th>
-<th class="head">Example</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>PresenceOf</td>
-<td>Validates that a field&#8217;s value isn&#8217;t null or empty string. This validator is automatically added based on the attributes marked as not null on the mapped table</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_PresenceOf.html"><span class="doc">Example</span></a></td>
-</tr>
-<tr class="row-odd"><td>Email</td>
-<td>Validates that field contains a valid email format</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Email.html"><span class="doc">Example</span></a></td>
-</tr>
-<tr class="row-even"><td>ExclusionIn</td>
-<td>Validates that a value is not within a list of possible values</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_ExclusionIn.html"><span class="doc">Example</span></a></td>
-</tr>
-<tr class="row-odd"><td>InclusionIn</td>
-<td>Validates that a value is within a list of possible values</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_InclusionIn.html"><span class="doc">Example</span></a></td>
-</tr>
-<tr class="row-even"><td>Numericality</td>
-<td>Validates that a field has a numeric format</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Numericality.html"><span class="doc">Example</span></a></td>
-</tr>
-<tr class="row-odd"><td>Regex</td>
-<td>Validates that the value of a field matches a regular expression</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Regex.html"><span class="doc">Example</span></a></td>
-</tr>
-<tr class="row-even"><td>Uniqueness</td>
-<td>Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Uniqueness.html"><span class="doc">Example</span></a></td>
-</tr>
-<tr class="row-odd"><td>StringLength</td>
-<td>Validates the length of a string</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_StringLength.html"><span class="doc">Example</span></a></td>
-</tr>
-<tr class="row-even"><td>Url</td>
-<td>Validates that a value has a valid URL format</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Url.html"><span class="doc">Example</span></a></td>
-</tr>
-</tbody>
-</table>
-<p>In addition to the built-in validators, you can create your own validators:</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Phalcon\Validation\ValidatorInterface</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Phalcon\ValidationInterface</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">MaxMinValidator</span> <span class="k">extends</span> <span class="nx">Validator</span> <span class="k">implements</span> <span class="nx">ValidatorInterface</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">(</span><span class="nx">ValidationInterface</span> <span class="nv">$validator</span><span class="p">,</span> <span class="nv">$field</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$min</span>   <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOption</span><span class="p">(</span><span class="s1">&#39;min&#39;</span><span class="p">);</span>
-        <span class="nv">$max</span>   <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOption</span><span class="p">(</span><span class="s1">&#39;max&#39;</span><span class="p">);</span>
-
-        <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">getValue</span><span class="p">(</span><span class="nv">$field</span><span class="p">);</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$min</span> <span class="o">&lt;=</span> <span class="nv">$value</span> <span class="o">&amp;&amp;</span> <span class="nv">$value</span> <span class="o">&lt;=</span> <span class="nv">$max</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation\Message</span><span class="p">(</span><span class="s2">&quot;The field doesn&#39;t have the right range of values&quot;</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="s2">&quot;MaxMinValidator&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-            <span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
-            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<blockquote class="highlights">
-<div><em>NOTE</em> Up to version 2.0.4 <code class="code docutils literal"><span class="pre">$model</span></code> must be <a class="reference internal" href="../api/Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a>
-instance (<code class="code docutils literal"><span class="pre">public</span> <span class="pre">function</span> <span class="pre">validate(Phalcon\Mvc\ModelInterface</span> <span class="pre">$model)</span></code>).</div></blockquote>
-<p>Adding the validator to a model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Customers</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">validation</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$validation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation</span><span class="p">;</span>
-
-        <span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">MaxMinValidator</span><span class="p">(</span>
-            <span class="k">array</span><span class="p">(</span>
-                <span class="s2">&quot;min&quot;</span>   <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-                <span class="s2">&quot;max&quot;</span>   <span class="o">=&gt;</span> <span class="mi">100</span>
-            <span class="p">)</span>
-        <span class="p">);</span>
-
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="nv">$validation</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>The idea of creating validators is make them reusable between several models. A validator can also be as simple as:</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Phalcon\Validation\Message</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">validation</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">==</span> <span class="s2">&quot;Old&quot;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Message</span><span class="p">(</span>
-                <span class="s2">&quot;Sorry, old robots are not allowed anymore&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;MyType&quot;</span>
-            <span class="p">);</span>
-
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
-
-            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="sql-avoiding-sql-injections">
 <h3>防止 SQL 注入（Avoiding SQL injections）<a class="headerlink" href="#sql-avoiding-sql-injections" title="永久链接至标题">¶</a></h3>
 <p>Every value assigned to a model attribute is escaped depending of its data type. A developer doesn&#8217;t need to escape manually
@@ -1619,33 +1417,6 @@ performed:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="validation-failed-events">
-<h2>验证失败事件（Validation Failed Events）<a class="headerlink" href="#validation-failed-events" title="永久链接至标题">¶</a></h2>
-<p>Another type of events are available when the data validation process finds any inconsistency:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="23%" />
-<col width="18%" />
-<col width="60%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Operation</th>
-<th class="head">Name</th>
-<th class="head">Explanation</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Insert or Update</td>
-<td>notSaved</td>
-<td>Triggered when the INSERT or UPDATE operation fails for any reason</td>
-</tr>
-<tr class="row-odd"><td>Insert, Delete or Update</td>
-<td>onValidationFails</td>
-<td>Triggered when any data manipulation operation fails</td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="section" id="use-dynamic-update">
 <h2>动态更新（Use Dynamic Update）<a class="headerlink" href="#use-dynamic-update" title="永久链接至标题">¶</a></h2>

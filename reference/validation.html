@@ -238,51 +238,71 @@
 <td>检测字段的值是否为非空</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_PresenceOf.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-odd"><td>Identical</td>
+<tr class="row-odd"><td>Alnum</td>
+<td>检测字段的值是否为字母和数字</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Alnum.html"><span class="doc">Example</span></a></td>
+</tr>
+<tr class="row-even"><td>Alpha</td>
+<td>检测字段的值是否为字母</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Alpha.html"><span class="doc">Example</span></a></td>
+</tr>
+<tr class="row-odd"><td>Date</td>
+<td>检测字段的值是否为日期</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Date.html"><span class="doc">Example</span></a></td>
+</tr>
+<tr class="row-even"><td>Digit</td>
+<td>检测字段的值是否为数字</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Digit.html"><span class="doc">Example</span></a></td>
+</tr>
+<tr class="row-odd"><td>Numericality</td>
+<td>检测字段的值是否为数量值</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Numericality.html"><span class="doc">Example</span></a></td>
+</tr>
+<tr class="row-even"><td>Identical</td>
 <td>检测字段的值是否和指定的相同</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Identical.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-even"><td>Email</td>
+<tr class="row-odd"><td>Email</td>
 <td>检测值是否为合法的email地址</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Email.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-odd"><td>ExclusionIn</td>
+<tr class="row-even"><td>ExclusionIn</td>
 <td>检测值是否不在列举的范围内</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_ExclusionIn.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-even"><td>InclusionIn</td>
+<tr class="row-odd"><td>InclusionIn</td>
 <td>检测值是否在列举的范围内</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_InclusionIn.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-odd"><td>Regex</td>
+<tr class="row-even"><td>Regex</td>
 <td>检测值是否匹配正则表达式</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Regex.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-even"><td>StringLength</td>
+<tr class="row-odd"><td>StringLength</td>
 <td>检测值的字符串长度</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_StringLength.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-odd"><td>Between</td>
+<tr class="row-even"><td>Between</td>
 <td>检测值是否位于两个值之间</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Between.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-even"><td>Confirmation</td>
+<tr class="row-odd"><td>Confirmation</td>
 <td>检测两个值是否相等</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Confirmation.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-odd"><td>Url</td>
+<tr class="row-even"><td>Url</td>
 <td>监测值是否是合法的URL</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Url.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-even"><td>Uniqueness</td>
+<tr class="row-odd"><td>Uniqueness</td>
 <td>监测值是否已存在</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Uniqueness.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-odd"><td>Json</td>
+<tr class="row-even"><td>Json</td>
 <td>监测值是否是合法的JSON</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Json.html"><span class="doc">Example</span></a></td>
 </tr>
-<tr class="row-even"><td>File</td>
+<tr class="row-odd"><td>File</td>
 <td>监测值是否是合法的文件格式</td>
 <td><a class="reference internal" href="../api/Phalcon_Validation_Validator_File.html"><span class="doc">Example</span></a></td>
 </tr>
@@ -371,7 +391,7 @@
 <div class="section" id="validation-messages">
 <h2>验证信息（Validation Messages）<a class="headerlink" href="#validation-messages" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Validation.html"><span class="doc">Phalcon\Validation</span></a> 内置了一个消息子系统，这提供了一个非常好的验证消息回传机制，以便在验证结束后取得验证信息，比如失败原因等。</p>
-<p>每个消息由一个 <span class="xref doc">Phalcon\Validation\Message</span> 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
+<p>每个消息由一个 <a class="reference internal" href="../api/Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a> 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
 每条消息都有一些扩展的信息组成比如产生错误的属性或消息的类型等：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -452,13 +472,16 @@
 </pre></div>
 </div>
 <p>也可以指定配置文件名称：</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span>&lt;?php
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-// 全局设置
-Phalcon\Validation::setMessageFilename(&#39;MyValidation&#39;);
+<span class="c1">// 全局设置</span>
+<span class="nx">Phalcon\Validation</span><span class="o">::</span><span class="na">setMessageFilename</span><span class="p">(</span><span class="s1">&#39;MyValidation&#39;</span><span class="p">);</span>
 
-// 只对当前实例有效
-$validation = new Phalcon\Validation(NULL, array(&#39;messageFilename&#39; =&gt; MyValidation&#39;));
+<span class="c1">// 只对当前实例有效</span>
+<span class="nv">$validation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;messageFilename&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MyValidation&#39;</span>
+<span class="p">));</span>
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -579,7 +602,7 @@ $validation = new Phalcon\Validation(NULL, array(&#39;messageFilename&#39; =&gt;
 <span class="sd">     * @param string $attribute</span>
 <span class="sd">     * @return boolean</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">(</span><span class="nx">Validation</span> <span class="nv">$validator</span><span class="p">,</span> <span class="nv">$attribute</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">(</span><span class="nx">Validation</span> <span class="nv">$validator</span><span class="p">,</span> <span class="nv">$attribute</span><span class="p">,</span> <span class="nx">bool</span> <span class="nv">$allowEmpty</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="c1">// If the attribute value is name we must stop the chain</span>
         <span class="k">if</span> <span class="p">(</span><span class="nv">$attribute</span> <span class="o">==</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="p">{</span>
