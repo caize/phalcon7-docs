@@ -207,6 +207,73 @@
 <div class="section" id="types-of-built-in-filters">
 <h2>内置过滤器类型（Types of Built-in Filters）<a class="headerlink" href="#types-of-built-in-filters" title="永久链接至标题">¶</a></h2>
 <p>以下是该容器提供的内置过滤器：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">名称</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>string</td>
+<td>去除标签和 HTML 实体,包括单双引号</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>删掉除字母、数字和 !#$%&amp;*+-/=?^_`{|}~&#64;.[] 外的全部字符</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>删掉除数字、加号、减号外的全部字符</td>
+</tr>
+<tr class="row-odd"><td>int!</td>
+<td>强制转换为 int 类型</td>
+</tr>
+<tr class="row-even"><td>int?</td>
+<td>如果是数字字符串，强制转换为 int 类型</td>
+</tr>
+<tr class="row-odd"><td>abs</td>
+<td>将字符串转为 int 或 float，并取绝对值</td>
+</tr>
+<tr class="row-even"><td>float</td>
+<td>删掉除数字、点号和加号、减号外的全部字符</td>
+</tr>
+<tr class="row-odd"><td>float!</td>
+<td>强制转换为 float 类型</td>
+</tr>
+<tr class="row-even"><td>float?</td>
+<td>如果是数字字符串，强制转换为 float 类型</td>
+</tr>
+<tr class="row-odd"><td>alphanum</td>
+<td>删掉除[a-zA-Z0-9]外的全部字符</td>
+</tr>
+<tr class="row-even"><td>date</td>
+<td>安装日期格式 Y-m-d 进行格式过滤</td>
+</tr>
+<tr class="row-odd"><td>datetime</td>
+<td>安装日期格式 Y-m-d 进行格式过滤</td>
+</tr>
+<tr class="row-even"><td>url</td>
+<td>删除所有非法的 URL 字符</td>
+</tr>
+<tr class="row-odd"><td>striptags</td>
+<td>调用 <a class="reference external" href="http://www.php.net/manual/en/function.strip-tags.php">strip_tags</a> 方法</td>
+</tr>
+<tr class="row-even"><td>trim</td>
+<td>调用 <a class="reference external" href="http://www.php.net/manual/en/function.trim.php">trim</a>  方法</td>
+</tr>
+<tr class="row-odd"><td>lower</td>
+<td>调用 <a class="reference external" href="http://www.php.net/manual/en/function.strtolower.php">strtolower</a> 方法</td>
+</tr>
+<tr class="row-even"><td>upper</td>
+<td>调用 <a class="reference external" href="http://www.php.net/manual/en/function.strtoupper.php">strtoupper</a>  方法</td>
+</tr>
+<tr class="row-odd"><td>xss</td>
+<td>删除所有 script</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="creating-your-own-filters">
 <h2>创建过滤器（Creating your own Filters）<a class="headerlink" href="#creating-your-own-filters" title="永久链接至标题">¶</a></h2>
