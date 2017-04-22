@@ -141,7 +141,7 @@
 <p>Returns a date/time string with the specified timestamp format $time = Phalcon\Date::formatted_time(&#8216;5 minutes ago&#8217;);</p>
 <p>public static <em>int|string Returns usually integer, but string if result is too big (&gt; PHP_INT_MAX)</em>  <strong>intervalToSeconds</strong> (<em>DateInterval</em> $interval)</p>
 <p>public static <em>int|string Returns usually integer, but string if result is too big (&gt; PHP_INT_MAX)</em>  <strong>createDateTimeZone</strong> ([<em>unknown</em> $timezone])</p>
-<p>public static <em>boolean</em>  <strong>filter</strong> (<em>unknown</em> $date, [<em>unknown</em> $format])</p>
+<p>public static <em>string</em>  <strong>filter</strong> (<em>unknown</em> $date, [<em>unknown</em> $format])</p>
 <p>Filters a variable $ret = Phalcon\Date::filter(&#8216;2012-01-22&#8217;); $ret = Phalcon\Date::filter(&#8216;2012-01-22 11:00:00&#8217;, &#8216;Y-m-d H:i:s&#8217;);</p>
 <p>public static <em>boolean</em>  <strong>valid</strong> (<em>unknown</em> $date, [<em>unknown</em> $format])</p>
 <p>Checks if a value is a valid date $ret = Phalcon\Date::valid(&#8216;2012-01-22&#8217;); $ret = Phalcon\Date::valid(&#8216;2012-01-22 11:00:00&#8217;, &#8216;Y-m-d H:i:s&#8217;);</p>

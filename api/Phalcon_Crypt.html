@@ -76,6 +76,7 @@
 			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
 			<div class="panel-body"><ul>
 <li><a class="reference internal" href="#">Class <strong>Phalcon\Crypt</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
 <li><a class="reference internal" href="#methods">Methods</a></li>
 </ul>
 </li>
@@ -106,6 +107,16 @@
 <span class="k">echo</span> <span class="nv">$crypt</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$encrypted</span><span class="p">,</span> <span class="nv">$key</span><span class="p">);</span>
 </pre></div>
 </div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>PADDING_DEFAULT</strong></p>
+<p><em>integer</em> <strong>PADDING_ANSI_X_923</strong></p>
+<p><em>integer</em> <strong>PADDING_PKCS7</strong></p>
+<p><em>integer</em> <strong>PADDING_ISO_10126</strong></p>
+<p><em>integer</em> <strong>PADDING_ISO_IEC_7816_4</strong></p>
+<p><em>integer</em> <strong>PADDING_ZERO</strong></p>
+<p><em>integer</em> <strong>PADDING_SPACE</strong></p>
+</div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
 <p>public <em>Phalcon\Encrypt</em>  <strong>setMethod</strong> (<em>string</em> $method)</p>
@@ -120,6 +131,10 @@
 <p>Sets the options</p>
 <p>public <em>int</em>  <strong>getOptions</strong> ()</p>
 <p>Returns the options</p>
+<p>public <a class="reference internal" href="Phalcon_CryptInterface.html"><span class="doc">Phalcon\CryptInterface</span></a>  <strong>setPadding</strong> (<em>int</em> $padding)</p>
+<p>Sets the padding</p>
+<p>public <em>int</em>  <strong>getPadding</strong> ()</p>
+<p>Returns the padding</p>
 <p>public <em>string</em>  <strong>encrypt</strong> (<em>string</em> $text, [<em>string</em> $key], [<em>unknown</em> $options])</p>
 <p>Encrypts a text</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>

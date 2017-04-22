@@ -134,11 +134,9 @@
 <p>Sets a handler that will be called when the router doesn&#8217;t match any of the defined routes</p>
 <p>public <a class="reference internal" href="Phalcon_Mvc_RouterInterface.html"><span class="doc">Phalcon\Mvc\RouterInterface</span></a>  <strong>getRouter</strong> ()</p>
 <p>Returns the internal router used by the application</p>
-<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><span class="doc">Phalcon\Di\ServiceInterface</span></a>  <strong>setService</strong> (<em>string</em> $serviceName, <em>mixed</em> $definition, [<em>boolean</em> $shared])</p>
+<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><span class="doc">Phalcon\Di\ServiceInterface</span></a>  <strong>offsetSet</strong> (<em>string</em> $serviceName, <em>mixed</em> $definition, [<em>boolean</em> $shared])</p>
 <p>Sets a service from the DI</p>
-<p>public <em>boolean</em>  <strong>hasService</strong> (<em>string</em> $serviceName)</p>
-<p>Checks if a service is registered in the DI</p>
-<p>public <em>object</em>  <strong>getService</strong> (<em>string</em> $serviceName)</p>
+<p>public <em>object</em>  <strong>offsetGet</strong> (<em>string</em> $serviceName)</p>
 <p>Obtains a service from the DI</p>
 <p>public <em>mixed</em>  <strong>getSharedService</strong> (<em>string</em> $serviceName)</p>
 <p>Obtains a shared service from the DI</p>
@@ -152,22 +150,8 @@
 <p>Return the handler that will be called for the matched route</p>
 <p>public <em>mixed</em>  <strong>getReturnedValue</strong> ()</p>
 <p>Returns the value returned by the executed handler</p>
-<p>public <em>boolean</em>  <strong>offsetExists</strong> (<em>unknown</em> $serviceName)</p>
-<p>Check if a service is registered in the internal services container using the array syntax. Alias for Phalcon\Mvc\Micro::hasService()</p>
-<p>public  <strong>offsetSet</strong> (<em>unknown</em> $serviceName, <em>mixed</em> $definition, [<em>unknown</em> $shared])</p>
-<p>Allows to register a shared service in the internal services container using the array syntax. Alias for Phalcon\Mvc\Micro::setService()</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Request</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>public <em>mixed</em>  <strong>offsetGet</strong> (<em>unknown</em> $serviceName)</p>
-<p>Allows to obtain a shared service in the internal services container using the array syntax. Alias for Phalcon\Mvc\Micro::getService()</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]);</span>
-</pre></div>
-</div>
+<p>public <em>boolean</em>  <strong>offsetExists</strong> (<em>string</em> $serviceName)</p>
+<p>Checks if a service is registered in the DI</p>
 <p>public  <strong>offsetUnset</strong> (<em>string</em> $alias)</p>
 <p>Removes a service from the internal services container using the array syntax</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Micro</span></a>  <strong>before</strong> (<em>callable</em> $handler)</p>
@@ -192,6 +176,12 @@
 <p>Fires an event, implicitly calls behaviors and listeners in the events manager are notified</p>
 <p>public <em>boolean</em>  <strong>fireEventCancel</strong> (<em>string</em> $eventName, [<em>unknown</em> $data], [<em>unknown</em> $cancelable]) inherited from Phalcon\Di\Injectable</p>
 <p>Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false</p>
+<p>public <em>boolean</em>  <strong>hasService</strong> (<em>string</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Check whether the DI contains a service by a name</p>
+<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><span class="doc">Phalcon\Di\ServiceInterface</span></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Sets a service from the DI</p>
+<p>public <em>object</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Obtains a service from the DI</p>
 <p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>unknown</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
 <p>Resolves the service based on its configuration</p>
 <p>public  <strong>attachEvent</strong> (<em>string</em> $eventType, <em>Closure</em> $callback) inherited from Phalcon\Di\Injectable</p>
