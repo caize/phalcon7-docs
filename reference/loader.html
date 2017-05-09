@@ -111,22 +111,16 @@
 			  
   <div class="section" id="universal-class-loader">
 <h1>自动加载器（Universal Class Loader）<a class="headerlink" href="#universal-class-loader" title="永久链接至标题">¶</a></h1>
-<p><a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> is a component that allows you to load project classes automatically,
-based on some predefined rules. Since this component is written in C, it provides the lowest overhead in
-reading and interpreting external PHP files.</p>
-<p>The behavior of this component is based on the PHP&#8217;s capability of <a class="reference external" href="http://www.php.net/manual/en/language.oop5.autoload.php">autoloading classes</a>. If a class that does
-not exist is used in any part of the code, a special handler will try to load it.
-<a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> serves as the special handler for this operation.
-By loading classes on a need to load basis, the overall performance is increased since the only file
-reads that occur are for the files needed. This technique is called <a class="reference external" href="http://en.wikipedia.org/wiki/Lazy_initialization">lazy initialization</a>.</p>
-<p>With this component you can load files from other projects or vendors, this autoloader is <a class="reference external" href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md">PSR-0</a> and <a class="reference external" href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md">PSR-4</a> compliant.</p>
-<p><a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> offers four options to autoload classes. You can use them one at a time or combine them.</p>
+<p><a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> 组件允许你定义类的自动加载则规。</p>
+<p>该组件基于 PHP 的 <cite>spl_autoload_register</cite> 函数实现尚未被定义的类（class）和接口（interface）的自动加载 <a class="reference external" href="http://www.php.net/manual/en/language.oop5.autoload.php">autoloading classes</a>。
+利用该组件实现 <a class="reference external" href="http://en.wikipedia.org/wiki/Lazy_initialization">lazy initialization</a>。我们可以从其他项目或者第三方库加载文件，
+兼容 <a class="reference external" href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md">PSR-0</a> and <a class="reference external" href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md">PSR-4</a> 标准.</p>
+<p><a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> 提供了 4 种加载方式，可以组合使用它们。</p>
 <div class="section" id="registering-namespaces">
 <h2>注册命名空间（Registering Namespaces）<a class="headerlink" href="#registering-namespaces" title="永久链接至标题">¶</a></h2>
-<p>If you&#8217;re organizing your code using namespaces, or external libraries do so, the registerNamespaces() provides the autoloading mechanism. It
-takes an associative array, which keys are namespace prefixes and their values are directories where the classes are located in. The namespace
-separator will be replaced by the directory separator when the loader try to find the classes. Remember always to add a trailing slash at
-the end of the paths.</p>
+<p>当我们使用命名空间组织代码或者使用带有命名空间的外部库时，可以使用 <cite>registerNamespaces</cite> 提供的加载机制。
+它的值是一个关联数组，键对应命名空间前缀，值是对应的目录。
+当加载程序试图通过命名空间找到类时，命名空间的分隔符将被目录分隔符替换，然后作为查找的文件路径。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
@@ -154,9 +148,8 @@ the end of the paths.</p>
 </div>
 <div class="section" id="registering-prefixes">
 <h2>注册前缀（Registering Prefixes）<a class="headerlink" href="#registering-prefixes" title="永久链接至标题">¶</a></h2>
-<p>This strategy is similar to the namespaces strategy. It takes an associative array, which keys are prefixes and their values are directories
-where the classes are located in. The namespace separator and the &#8220;_&#8221; underscore character will be replaced by the directory separator when
-the loader try to find the classes. Remember always to add a trailing slash at the end of the paths.</p>
+<p>这个策略类似于命名空间策略。它需要一个关联数组，其中键是前缀，它们的值是类所在的目录。
+当加载程序试图通过命名空间找到类时，命名空间的分隔符和下划线 “_” 将被目录分隔符替换。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
@@ -184,9 +177,7 @@ the loader try to find the classes. Remember always to add a trailing slash at t
 </div>
 <div class="section" id="registering-directories">
 <h2>注册文件夹（Registering Directories）<a class="headerlink" href="#registering-directories" title="永久链接至标题">¶</a></h2>
-<p>The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance,
-since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class.
-It&#8217;s important to register the directories in relevance order. Remember always add a trailing slash at the end of the paths.</p>
+<p>在文件目录多时不推荐该方法，它按照目录在数组内的顺序从上到下，查找文件。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
@@ -216,10 +207,7 @@ It&#8217;s important to register the directories in relevance order. Remember al
 </div>
 <div class="section" id="registering-classes">
 <h2>注册类名（Registering Classes）<a class="headerlink" href="#registering-classes" title="永久链接至标题">¶</a></h2>
-<p>The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the
-project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading.
-However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make
-maintenance of the class list very cumbersome and it is not recommended.</p>
+<p>最后一个方式，是直接将类名和文件对应起来，这是性能最好的加载方式，但类的列表不太好维护，所以不推荐使用。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
