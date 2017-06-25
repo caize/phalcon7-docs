@@ -45,6 +45,7 @@ API Indice
    Phalcon_Cache_Backend_Memory
    Phalcon_Cache_Backend_Mongo
    Phalcon_Cache_Backend_Redis
+   Phalcon_Cache_Backend_Wiredtiger
    Phalcon_Cache_Backend_Xcache
    Phalcon_Cache_Backend_Yac
    Phalcon_Cache_Exception
@@ -55,11 +56,17 @@ API Indice
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
    Phalcon_Cache_Multiple
+   Phalcon_Cache_Yac
+   Phalcon_Chart_Captcha
    Phalcon_Chart_Exception
+   Phalcon_Chart_QRcode
+   Phalcon_Cli_Color
    Phalcon_Cli_Console
    Phalcon_Cli_Console_Exception
    Phalcon_Cli_Dispatcher
    Phalcon_Cli_Dispatcher_Exception
+   Phalcon_Cli_Options
+   Phalcon_Cli_Options_Exception
    Phalcon_Cli_Router
    Phalcon_Cli_Router_Exception
    Phalcon_Cli_Task
@@ -156,9 +163,10 @@ API Indice
    Phalcon_Image_Adapter_GD
    Phalcon_Image_Adapter_Imagick
    Phalcon_Image_Exception
-   Phalcon_JsonRPc_Client_Response
-   Phalcon_JsonRpc_Client
-   Phalcon_JsonRpc_Client_Exception
+   Phalcon_Intrusive_Avltree
+   Phalcon_Intrusive_Avltree_Node
+   Phalcon_Intrusive_Rbtree
+   Phalcon_Intrusive_Rbtree_Node
    Phalcon_Kernel
    Phalcon_Loader
    Phalcon_Loader_Exception
@@ -181,8 +189,6 @@ API Indice
    Phalcon_Mvc_Controller
    Phalcon_Mvc_Dispatcher
    Phalcon_Mvc_Dispatcher_Exception
-   Phalcon_Mvc_JsonRpc
-   Phalcon_Mvc_JsonRpc_Exception
    Phalcon_Mvc_Micro
    Phalcon_Mvc_Micro_Collection
    Phalcon_Mvc_Micro_Exception
@@ -242,9 +248,6 @@ API Indice
    Phalcon_Mvc_View
    Phalcon_Mvc_View_Engine
    Phalcon_Mvc_View_Engine_Php
-   Phalcon_Mvc_View_Engine_Volt
-   Phalcon_Mvc_View_Engine_Volt_Compiler
-   Phalcon_Mvc_View_Engine_Volt_Exception
    Phalcon_Mvc_View_Exception
    Phalcon_Mvc_View_Model
    Phalcon_Mvc_View_Simple
@@ -254,6 +257,11 @@ API Indice
    Phalcon_Paginator_Adapter_Sql
    Phalcon_Paginator_Exception
    Phalcon_Process_Exception
+   Phalcon_Process_Proc
+   Phalcon_Process_Sharedmemory
+   Phalcon_Profiler
+   Phalcon_Profiler_Exception
+   Phalcon_Profiler_Item
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
    Phalcon_Random
@@ -263,7 +271,10 @@ API Indice
    Phalcon_Security
    Phalcon_Security_Exception
    Phalcon_Security_Random
+   Phalcon_Server
    Phalcon_Server_Exception
+   Phalcon_Server_Http
+   Phalcon_Server_Simple
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Cache
    Phalcon_Session_Adapter_Files
@@ -271,7 +282,10 @@ API Indice
    Phalcon_Session_Bag
    Phalcon_Session_Exception
    Phalcon_Socket_Exception
+   Phalcon_Storage_Btree
    Phalcon_Storage_Exception
+   Phalcon_Storage_Wiredtiger
+   Phalcon_Storage_Wiredtiger_Cursor
    Phalcon_Tag
    Phalcon_Tag_Exception
    Phalcon_Tag_Select
@@ -309,6 +323,9 @@ API Indice
    Phalcon_Validation_Validator_Uniqueness
    Phalcon_Validation_Validator_Url
    Phalcon_Version
+   Phalcon_Websocket_Client
+   Phalcon_Websocket_Connection
+   Phalcon_Websocket_Server
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceAware
    Phalcon_Acl_ResourceInterface
@@ -373,6 +390,8 @@ API Indice
    Phalcon_Mvc_View_EngineInterface
    Phalcon_Mvc_View_ModelInterface
    Phalcon_Paginator_AdapterInterface
+   Phalcon_Profile_ItemInterface
+   Phalcon_ProfilerInterface
    Phalcon_RouterInterface
    Phalcon_Session_AdapterInterface
    Phalcon_Session_BagInterface
@@ -380,3 +399,4 @@ API Indice
    Phalcon_ValidationInterface
    Phalcon_Validation_MessageInterface
    Phalcon_Validation_ValidatorInterface
+   Phalcon_Websocket_EventLoopInterface
