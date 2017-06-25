@@ -632,6 +632,11 @@
 
 <span class="nv">$customers</span> <span class="o">=</span> <span class="nx">Customers</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
 <span class="nv">$arr</span> <span class="o">=</span> <span class="nv">$customers</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+
+<span class="nv">$columns</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">);</span> <span class="c1">// 需要输出的字段</span>
+<span class="nv">$rename</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// 字段名是否是映射后的名称</span>
+<span class="nv">$negate</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="nv">$arr</span> <span class="o">=</span> <span class="nv">$customers</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">(</span><span class="nv">$columns</span><span class="p">,</span> <span class="nv">$rename</span><span class="p">,</span> <span class="nv">$negate</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -686,11 +691,8 @@
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case &#8220;1&#8221; or &#8220;2&#8221; are considered strings
-and not numbers, so the placeholder could not be successfully replaced.</p>
-<p>Strings are automatically escaped using <a class="reference external" href="http://www.php.net/manual/en/pdo.prepared-statements.php">PDO</a>. This function takes into account the connection charset, so its recommended to define
-the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects
-when storing or retrieving data.</p>
+<p>当使用数字占位符时，需要将下标定义为整数即：1 or 2，例如：&#8221;1&#8221; or &#8220;2&#8221; 将被认为是字符串，因此将无法成功替换占位符。</p>
+<p>将会使用 <a class="reference external" href="http://www.php.net/manual/en/pdo.prepared-statements.php">PDO</a> 自动转义字符串，此函数会受到数据库连接字符集的影响，所以建议在连接参数或者数据库中配置正确的字符集。</p>
 <p>Additionally you can set the parameter &#8220;bindTypes&#8221;, this allows defining how the parameters should be bound according to its data type:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -721,21 +723,16 @@ when storing or retrieving data.</p>
 <blockquote class="highlights">
 <div>Since the default bind-type is <code class="code docutils literal"><span class="pre">Phalcon\Db\Column::BIND_PARAM_STR</span></code>, there is no need to specify the
 &#8220;bindTypes&#8221; parameter if all of the columns are of that type.</div></blockquote>
-<p>If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:</p>
+<p>同样的方式，可以绑定数组：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">];</span> <span class="c1">// $array: [[0] =&gt; &quot;a&quot;, [1] =&gt; &quot;b&quot;, [2] =&gt; &quot;c&quot;]</span>
-
-<span class="nb">unset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// $array: [[0] =&gt; &quot;a&quot;, [2] =&gt; &quot;c&quot;]</span>
-
-<span class="c1">// Now we have to renumber the keys</span>
-<span class="nv">$array</span> <span class="o">=</span> <span class="nb">array_values</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="c1">// $array: [[0] =&gt; &quot;a&quot;, [1] =&gt; &quot;c&quot;]</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">];</span>
 
 <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
     <span class="k">array</span><span class="p">(</span>
-        <span class="s1">&#39;letter IN ({letter:array})&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;letter IN (:letter:)&#39;</span><span class="p">,</span>
         <span class="s1">&#39;bind&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-            <span class="s1">&#39;letter&#39;</span> <span class="o">=&gt;</span> <span class="nv">$array</span>
+            <span class="s1">&#39;letter&#39;</span> <span class="o">=&gt;</span> <span class="nv">$values</span>
         <span class="p">)</span>
     <span class="p">)</span>
 <span class="p">);</span>

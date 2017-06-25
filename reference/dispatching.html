@@ -98,6 +98,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#not-found-handling-not-found-exceptions">处理 Not-Found 错误（Handling Not-Found Exceptions）</a></li>
+<li><a class="reference internal" href="#set-error-handler">设置错误处理器（Set error handler）</a></li>
 <li><a class="reference internal" href="#implementing-your-own-dispatcher">自定义调度器（Implementing your own Dispatcher）</a></li>
 </ul>
 </li>
@@ -688,6 +689,16 @@
 <blockquote class="highlights">
 <div>仅仅当异常产生于调度器或者异常产生于被执行的动作时才会通知&#8217;beforeException&#8217;里面的事件。
 侦听者或者控制器事件中产生的异常则会重定向到最近的try/catch。</div></blockquote>
+</div>
+<div class="section" id="set-error-handler">
+<h2>设置错误处理器（Set error handler）<a class="headerlink" href="#set-error-handler" title="永久链接至标题">¶</a></h2>
+<p>没有匹配到对应的路由，我们通过 <cite>$router-&gt;notFound</cite> 来设置控制器，如果是无法加载对应的控制器，或者找不到对应的 <cite>Action</cite>，我们通过 <cite>$dispatch-&gt;setErrorHandler</cite> 来设置：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setErrorHandler</span><span class="p">(</span><span class="s1">&#39;Error::index&#39;</span><span class="p">,</span> <span class="nx">Phalcon\Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_HANDLER_NOT_FOUND</span><span class="p">);</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setErrorHandler</span><span class="p">(</span><span class="s1">&#39;Error::index&#39;</span><span class="p">,</span> <span class="nx">Phalcon\Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_ACTION_NOT_FOUND</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="implementing-your-own-dispatcher">
 <h2>自定义调度器（Implementing your own Dispatcher）<a class="headerlink" href="#implementing-your-own-dispatcher" title="永久链接至标题">¶</a></h2>

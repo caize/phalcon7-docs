@@ -160,6 +160,21 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>其它写法：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$validation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;PresenceOf&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The name is required&#39;</span><span class="p">)),</span>
+    <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;PresenceOf&#39;</span><span class="p">,</span>  <span class="s1">&#39;Email&#39;</span><span class="p">),</span>
+    <span class="p">));</span>
+
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;PresenceOf&#39;</span><span class="p">);</span>
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;PresenceOf&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Email&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The e-mail is not valid&#39;</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
 <p>由于此模型是松耦合设计的，故此我们也可以使用自己书写的验证工具：</p>
 <div class="section" id="initializing-validation">
 <h2>初始化验证（Initializing Validation）<a class="headerlink" href="#initializing-validation" title="永久链接至标题">¶</a></h2>

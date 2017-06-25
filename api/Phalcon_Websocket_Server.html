@@ -102,7 +102,7 @@
  <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">ON_CLOSE</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">){</span>
      <span class="k">echo</span> <span class="s1">&#39;Close&#39;</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
  <span class="p">});</span>
- <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">ON_DATA</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$conn</span><span class="p">){</span>
+ <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">ON_DATA</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$conn</span><span class="p">,</span> <span class="nv">$data</span><span class="p">){</span>
      <span class="k">echo</span> <span class="s1">&#39;Data&#39;</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
  <span class="p">});</span>
  <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">();</span>

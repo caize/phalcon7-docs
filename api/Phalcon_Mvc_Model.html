@@ -171,11 +171,11 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><span class="doc">Phalcon\Mvc\Model\TransactionInterface</span></a>  <strong>getTransaction</strong> ()</p>
 <p>Returns a transaction related in the Model instance</p>
-<p>protected <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>setSource</strong> (<em>string</em> $source)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>setSource</strong> (<em>string</em> $source)</p>
 <p>Sets table name which model should be mapped</p>
 <p>public <em>string</em>  <strong>getSource</strong> ()</p>
 <p>Returns table name mapped in the model</p>
-<p>protected <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>setSchema</strong> (<em>string</em> $schema)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>setSchema</strong> (<em>string</em> $schema)</p>
 <p>Sets schema name where table mapped is located</p>
 <p>public <em>string</em>  <strong>getSchema</strong> ()</p>
 <p>Returns schema name where table mapped is located</p>
@@ -239,7 +239,7 @@
 <p>Gets the connection used to read data for the model</p>
 <p>public <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><span class="doc">Phalcon\Db\AdapterInterface</span></a>  <strong>getWriteConnection</strong> ()</p>
 <p>Gets the connection used to write data to the model</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>assign</strong> (<em>array</em> $data, [<em>array</em> $columnMap], [<em>array</em> $whiteList])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>assign</strong> (<em>array</em> $data, [<em>array</em> $columnMap], [<em>array</em> $whiteList], [<em>unknown</em> $negate])</p>
 <p>Assigns values to a model from an array</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -782,7 +782,7 @@
  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">dump</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>public <em>array</em>  <strong>toArray</strong> ([<em>array</em> $columns], [<em>bool</em> $renameColumns])</p>
+<p>public <em>array</em>  <strong>toArray</strong> ([<em>array</em> $columns], [<em>bool</em> $renameColumns], [<em>unknown</em> $negate])</p>
 <p>Returns the instance as an array representation</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -841,11 +841,13 @@
 <p>Sets the dependency injector</p>
 <p>public <a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a>  <strong>getDI</strong> ([<em>unknown</em> $error], [<em>unknown</em> $notUseDefault]) inherited from Phalcon\Di\Injectable</p>
 <p>Returns the internal dependency injector</p>
+<p>public <em>mixed</em>  <strong>fireEventData</strong> (<em>string</em> $eventName, [<em>mixed</em> $data]) inherited from Phalcon\Di\Injectable</p>
+<p>Fires an event, return data</p>
 <p>public <em>boolean</em>  <strong>hasService</strong> (<em>string</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Check whether the DI contains a service by a name</p>
 <p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><span class="doc">Phalcon\Di\ServiceInterface</span></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Sets a service from the DI</p>
-<p>public <em>object</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>public <em>object|null</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Obtains a service from the DI</p>
 <p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>unknown</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
 <p>Resolves the service based on its configuration</p>

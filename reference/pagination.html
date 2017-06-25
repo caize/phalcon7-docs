@@ -246,8 +246,8 @@ object that contains the paginated data. It can be used for generating the pagin
 <span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PaginatorSql</span><span class="p">(</span>
     <span class="k">array</span><span class="p">(</span>
         <span class="s2">&quot;sql&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;SELECT * FROM robots WHERE type = :type LIMIT :limit OFFSET :offset&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;total_sql&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;SELECT COUNT(*) rowcount FROM robots WHERE type = :type FROM robots&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;google&#39;</span><span class="p">],</span>
+        <span class="s2">&quot;total_sql&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;SELECT COUNT(*) rowcount FROM robots WHERE type = :type&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;google&#39;</span><span class="p">],</span>
         <span class="s2">&quot;limit&quot;</span>   <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
         <span class="s2">&quot;page&quot;</span>    <span class="o">=&gt;</span> <span class="mi">1</span>
     <span class="p">)</span>

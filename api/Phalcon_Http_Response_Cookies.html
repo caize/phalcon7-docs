@@ -127,11 +127,13 @@
 <p>Fires an event, implicitly calls behaviors and listeners in the events manager are notified</p>
 <p>public <em>boolean</em>  <strong>fireEventCancel</strong> (<em>string</em> $eventName, [<em>unknown</em> $data], [<em>unknown</em> $cancelable]) inherited from Phalcon\Di\Injectable</p>
 <p>Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false</p>
+<p>public <em>mixed</em>  <strong>fireEventData</strong> (<em>string</em> $eventName, [<em>mixed</em> $data]) inherited from Phalcon\Di\Injectable</p>
+<p>Fires an event, return data</p>
 <p>public <em>boolean</em>  <strong>hasService</strong> (<em>string</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Check whether the DI contains a service by a name</p>
 <p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><span class="doc">Phalcon\Di\ServiceInterface</span></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Sets a service from the DI</p>
-<p>public <em>object</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>public <em>object|null</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Obtains a service from the DI</p>
 <p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>unknown</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
 <p>Resolves the service based on its configuration</p>
