@@ -191,6 +191,9 @@ retrieves the headers before sending it to client:</p>
 
 <span class="c1">// Redirect specifying the HTTP status code</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;http://www.example.com/new-location&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">301</span><span class="p">);</span>
+
+<span class="c1">// Send response to the client</span>
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>All internal URIs are generated using the &#8216;url&#8217; service (by default <a class="reference internal" href="url.html"><span class="doc">Phalcon\Mvc\Url</span></a>). This example demonstrates

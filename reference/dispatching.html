@@ -99,6 +99,7 @@
 </li>
 <li><a class="reference internal" href="#not-found-handling-not-found-exceptions">处理 Not-Found 错误（Handling Not-Found Exceptions）</a></li>
 <li><a class="reference internal" href="#set-error-handler">设置错误处理器（Set error handler）</a></li>
+<li><a class="reference internal" href="#camelize-controller">控制器的驼峰转换（Camelize Controller）</a></li>
 <li><a class="reference internal" href="#implementing-your-own-dispatcher">自定义调度器（Implementing your own Dispatcher）</a></li>
 </ul>
 </li>
@@ -697,6 +698,16 @@
 
 <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setErrorHandler</span><span class="p">(</span><span class="s1">&#39;Error::index&#39;</span><span class="p">,</span> <span class="nx">Phalcon\Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_HANDLER_NOT_FOUND</span><span class="p">);</span>
 <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setErrorHandler</span><span class="p">(</span><span class="s1">&#39;Error::index&#39;</span><span class="p">,</span> <span class="nx">Phalcon\Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_ACTION_NOT_FOUND</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="camelize-controller">
+<h2>控制器的驼峰转换（Camelize Controller）<a class="headerlink" href="#camelize-controller" title="永久链接至标题">¶</a></h2>
+<p>Phalcon 默认执行控制器类名和命名空间的驼峰转换，我们可以关闭它：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">camelizeController</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">camelizeNamespace</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

@@ -469,29 +469,83 @@
 事件将被当作&#8221;application&#8221;类型被消费掉。目前已支持的事件如下：</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="25%" />
-<col width="75%" />
+<col width="34%" />
+<col width="38%" />
+<col width="14%" />
+<col width="14%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">事件名称</th>
-<th class="head">消费于</th>
+<tr class="row-odd"><th class="head">事件名</th>
+<th class="head">触发条件</th>
+<th class="head">能否中止操作</th>
+<th class="head">能否返回值</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>boot</td>
 <td>当应用处理它首个请求时被执行</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>beforeHandleRouter</td>
+<td>当应用处理它首个请求时被执行</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>afterHandleRouter</td>
+<td>当应用处理它首个请求时被执行</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
 <tr class="row-odd"><td>beforeStartModule</td>
 <td>在初始化模块之前，仅当模块被注册时</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
 <tr class="row-even"><td>afterStartModule</td>
 <td>在初始化模块之后，仅当模块被注册时</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>beforeCheckUseImplicitView</td>
+<td>在检查是否启用视图之前</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>afterCheckUseImplicitView</td>
+<td>在检查是否启用视图之后</td>
+<td>No</td>
+<td>No</td>
 </tr>
 <tr class="row-odd"><td>beforeHandleRequest</td>
 <td>在执行分发环前</td>
+<td>Yes</td>
+<td>No</td>
 </tr>
 <tr class="row-even"><td>afterHandleRequest</td>
 <td>在执行分发环后</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>beforeRenderView</td>
+<td>在执行视图渲染之前</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>afterRenderView</td>
+<td>在执行视图渲染之后</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>beforeSendResponse</td>
+<td>在发送响应之前</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>afterSendResponse</td>
+<td>在执行视图渲染之后</td>
+<td>No</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
