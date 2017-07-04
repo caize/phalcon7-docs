@@ -712,8 +712,8 @@ obtaining the &#8220;flash&#8221; service from the DI container. By doing this, 
 </div>
 <div class="section" id="disabling-enabling-features">
 <h2>禁用或启用特性（Disabling/Enabling Features）<a class="headerlink" href="#disabling-enabling-features" title="永久链接至标题">¶</a></h2>
-<p>In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly.
-According to how you use the ORM you can disable that you aren&#8217;t using. These options can also be temporarily disabled if required:</p>
+<p>在 ORM 中，我们实现了一种机制，允许您在全局上启用或者禁用特定的特性或选项。
+我们可以使用 <cite>setup</cite> 方法暂时启用或者禁用它：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
@@ -762,6 +762,10 @@ According to how you use the ORM you can disable that you aren&#8217;t using. Th
 </tr>
 <tr class="row-odd"><td>lateStateBinding</td>
 <td>Enables/Disables late state binding of the method <code class="code docutils literal"><span class="pre">Mvc\Model::cloneResultMap()</span></code></td>
+<td>false</td>
+</tr>
+<tr class="row-even"><td>strict</td>
+<td>开启或者禁用严格模式，严格模式下将会根据影响行数返回操作成功还是失败</td>
 <td>false</td>
 </tr>
 </tbody>
