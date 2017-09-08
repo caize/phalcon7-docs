@@ -276,6 +276,18 @@ Adds the "for_update" parameter to the criteria
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **setIndex** (*string* $index)
+
+Adds the "index" parameter to the criteria
+
+
+
+public *string*  **getIndex** ()
+
+Gets the index
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **sharedLock** ([*boolean* $sharedLock])
 
 Adds the "shared_lock" parameter to the criteria

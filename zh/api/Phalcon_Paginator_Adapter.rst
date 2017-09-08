@@ -1,52 +1,40 @@
-Class **Phalcon\\Paginator\\Adapter\\Model**
-============================================
+Abstract class **Phalcon\\Paginator\\Adapter**
+==============================================
 
-*extends* abstract class :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/paginator/adapter/model.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/paginator/adapter.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This adapter allows to paginate data using a Phalcon\\Mvc\\Model resultset as base
+Base class for Phalcon\\Paginator adapters
 
 
 Methods
 -------
 
-public  **__construct** (*array* $config)
-
-Phalcon\\Paginator\\Adapter\\Model constructor
-
-
-
-public *\stdClass*  **getPaginate** ()
-
-Returns a slice of the resultset to show in the pagination
-
-
-
-public  **setCurrentPage** (*int* $page) inherited from Phalcon\\Paginator\\Adapter
+public  **setCurrentPage** (*int* $page)
 
 Set current page number
 
 
 
-public  **getCurrentPage** () inherited from Phalcon\\Paginator\\Adapter
+public  **getCurrentPage** ()
 
 Get current page number
 
 
 
-public :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`  **setLimit** (*int* $limit) inherited from Phalcon\\Paginator\\Adapter
+public :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`  **setLimit** (*int* $limit)
 
 Set current rows limit
 
 
 
-public *int $limit*  **getLimit** () inherited from Phalcon\\Paginator\\Adapter
+public *int $limit*  **getLimit** ()
 
 Get current rows limit
 
@@ -138,5 +126,11 @@ public  **__sleep** () inherited from Phalcon\\Di\\Injectable
 public  **__debugInfo** () inherited from Phalcon\\Di\\Injectable
 
 ...
+
+
+abstract public *\stdClass*  **getPaginate** () inherited from Phalcon\\Paginator\\AdapterInterface
+
+Returns a slice of the resultset to show in the pagination
+
 
 

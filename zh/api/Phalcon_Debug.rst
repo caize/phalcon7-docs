@@ -185,3 +185,9 @@ Logs messages
 
 
 
+public static  **dumpVar** (*mixed* $var, [*unknown* $level])
+
+Dumps a string representation of variable to output
+
+
+

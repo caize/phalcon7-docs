@@ -1,16 +1,16 @@
-Class **Phalcon\\ContinueException**
-====================================
+Class **Phalcon\\Sync\\Exception**
+==================================
 
-*extends* Exception
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 *implements* Throwable
 
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/continueexception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/sync/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-
+Class for exceptions thrown by Phalcon\\Sync
 
 
 Methods

@@ -357,12 +357,6 @@ Get error handler
 
 
 
-public *boolean*  **fireEvent** (*string* $eventName, [*string* $data], [*string* $cancelable]) inherited from Phalcon\\Dispatcher
-
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified
-
-
-
 public *\Exception*  **getLastException** () inherited from Phalcon\\Dispatcher
 
 Returns the last exception
@@ -420,6 +414,12 @@ Sets the event manager
 public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
+
+
+
+public *boolean*  **fireEvent** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
+
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 
 

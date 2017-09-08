@@ -53,8 +53,8 @@ Phalcon\\Mvc\\Model\\Query\\Builder\\Select constructor
         'limit'      => 20,
         'offset'     => 20,
         // or 'limit' => array(20, 20),
-    );
-    $queryBuilder = new Phalcon\Mvc\Model\Query\Builder\Select($params);
+     );
+     $queryBuilder = new Phalcon\Mvc\Model\Query\Builder\Select($params);
 
 
 
@@ -478,6 +478,18 @@ Gets the bind types
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **getMergeBindTypes** () inherited from Phalcon\\Mvc\\Model\\Query\\Builder
 
 Gets the merge bind types
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setIndex** (*string* $index) inherited from Phalcon\\Mvc\\Model\\Query\\Builder
+
+Adds the index
+
+
+
+public *string*  **getIndex** () inherited from Phalcon\\Mvc\\Model\\Query\\Builder
+
+Gets the index
 
 
 

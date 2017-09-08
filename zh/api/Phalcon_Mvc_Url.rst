@@ -115,6 +115,12 @@ Generates a local path
 
 
 
+public *boolean*  **isLocal** (*string* $uri)
+
+Check whether the URI is local
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector

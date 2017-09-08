@@ -1,5 +1,5 @@
-Class **Phalcon\\Cache\\Backend\\Yac**
-======================================
+Class **Phalcon\\Cache\\Backend\\Lmdb**
+=======================================
 
 *extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
@@ -8,9 +8,9 @@ Class **Phalcon\\Cache\\Backend\\Yac**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/backend/yac.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/backend/lmdb.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments, PHP data or raw data to a yac backend  This adapter uses the special yacd key "_PHCY" to store all the keys internally used by the adapter  
+Allows to cache output fragments, PHP data or raw data to a lmdb backend  This adapter uses the special lmdbd key "_PHCY" to store all the keys internally used by the adapter  
 
 .. code-block:: php
 
@@ -21,15 +21,21 @@ Allows to cache output fragments, PHP data or raw data to a yac backend  This ad
         "lifetime" => 172800
      ));
     
-     //Create the Cache setting yacd connection options
-     $cache = new Phalcon\Cache\Backend\Yac($frontCache, array(
-    	'prefix' => "myproduct_"
+     // Create the Cache setting lmdb connection options
+     $cache = new Phalcon\Cache\Backend\Lmdb($frontCache, array(
+     	'path' => __DIR__.'/lmdb',
+    'name' => 'phalcon_test'
+    ));
+    
+     // Or
+     $cache = new Phalcon\Cache\Backend\Lmdb($frontCache, array(
+    	'lmdb' => new Phalcon\Storage\Lmdb(__DIR__.'/lmdb')
      ));
     
-     //Cache arbitrary data
+     // Cache arbitrary data
      $cache->save('my-data', array(1, 2, 3, 4, 5));
     
-     //Get data
+     // Get data
      $data = $cache->get('my-data');
 
 
@@ -39,13 +45,7 @@ Methods
 
 public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
-Phalcon\\Cache\\Backend\\Yac constructor
-
-
-
-protected  **_connect** ()
-
-Create internal connection to yacd
+Phalcon\\Cache\\Backend\\Lmdb constructor
 
 
 
@@ -57,7 +57,7 @@ Returns a cached content
 
 public  **save** ([*int|string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the Yacd backend and stops the frontend
+Stores cached content into the Lmdbd backend and stops the frontend
 
 
 
@@ -95,16 +95,6 @@ public *boolean*  **flush** ()
 
 Immediately invalidates all existing items.
 
-
-
-public  **getTrackingKey** ()
-
-...
-
-
-public  **setTrackingKey** (*unknown* $key)
-
-...
 
 
 public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
