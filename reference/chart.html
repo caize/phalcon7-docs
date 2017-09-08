@@ -24,8 +24,8 @@
     <link rel="index" title="索引" href="../index.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
-    <link rel="next" title="二进制数据读取与写入（Binary Data Read And Write）" href="binary.html" />
-    <link rel="prev" title="图像处理（Image manipulation）" href="image.html" /> 
+    <link rel="next" title="异步调用（Asynchronous）" href="async.html" />
+    <link rel="prev" title="单元测试（Unit testing）" href="unit-testing.html" /> 
 </head>
 <body>
 
@@ -67,10 +67,10 @@
           <a href="../genindex.html" title="总目录"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="binary.html" title="二进制数据读取与写入（Binary Data Read And Write）"
+          <a href="async.html" title="异步调用（Asynchronous）"
              accesskey="N">下一页</a> |</li>
         <li class="right" >
-          <a href="image.html" title="图像处理（Image manipulation）"
+          <a href="unit-testing.html" title="单元测试（Unit testing）"
              accesskey="P">上一页</a> |</li>
         <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
         <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
@@ -94,9 +94,9 @@
 </ul>
 </div>
 			<div class="panel-heading">上一个主题</div>
-            <div class="panel-body"><p class="topless"><a href="image.html" title="上一章">&lt; 图像处理（Image manipulation）</a></p></div>
+            <div class="panel-body"><p class="topless"><a href="unit-testing.html" title="上一章">&lt; 单元测试（Unit testing）</a></p></div>
 			<div class="panel-heading">下一个主题</div>
-            <div class="panel-body"><p class="topless"><a href="binary.html" title="下一章">二进制数据读取与写入（Binary Data Read And Write） &gt;</a></p></div>
+            <div class="panel-body"><p class="topless"><a href="async.html" title="下一章">异步调用（Asynchronous） &gt;</a></p></div>
 		</div>
 	</div>
   <div class="col-md-9 second-box" valign="top">
@@ -113,8 +113,8 @@
 <p>Phalcon 内置下列图形生成类：</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="87%" />
+<col width="14%" />
+<col width="86%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">名称</th>
@@ -128,12 +128,15 @@
 <tr class="row-odd"><td>Captcha</td>
 <td><a class="reference internal" href="../api/Phalcon_Chart_Captcha.html"><span class="doc">Phalcon\Chart\Captcha</span></a></td>
 </tr>
+<tr class="row-even"><td>TinyCaptcha</td>
+<td>:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>Phalcon\Chart\Captcha\Tiny &lt;../api/Phalcon_Chart_Captcha_Tiny&gt;</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="qrcode-generate">
 <h3>二维码生成（QRcode Generate）<a class="headerlink" href="#qrcode-generate" title="永久链接至标题">¶</a></h3>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$qr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Chart\QRcode</span><span class="p">();</span>
 <span class="nv">$bytes</span> <span class="o">=</span> <span class="nv">$qr</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">();</span>
@@ -143,7 +146,7 @@
 <div class="section" id="captcha-generate">
 <h3>验证码（Captcha Generate）<a class="headerlink" href="#captcha-generate" title="永久链接至标题">¶</a></h3>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$code</span> <span class="o">=</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">random</span><span class="p">(</span><span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">RANDOM_ALNUM</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 <span class="nv">$captcha</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Chart\Captcha</span><span class="p">(</span><span class="nv">$code</span><span class="p">);</span>
@@ -167,10 +170,10 @@
           <a href="../genindex.html" title="总目录"
              >索引</a></li>
         <li class="right" >
-          <a href="binary.html" title="二进制数据读取与写入（Binary Data Read And Write）"
+          <a href="async.html" title="异步调用（Asynchronous）"
              >下一页</a> |</li>
         <li class="right" >
-          <a href="image.html" title="图像处理（Image manipulation）"
+          <a href="unit-testing.html" title="单元测试（Unit testing）"
              >上一页</a> |</li> 
       </ul>
     </div>
