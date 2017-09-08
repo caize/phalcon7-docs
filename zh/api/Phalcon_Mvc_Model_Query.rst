@@ -330,6 +330,18 @@ Returns default bind types
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setIndex** (*string* $index)
+
+Adds the index
+
+
+
+public *string*  **getIndex** ()
+
+Gets the index
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setIntermediate** (*array* $intermediate)
 
 Allows to set the IR to be executed

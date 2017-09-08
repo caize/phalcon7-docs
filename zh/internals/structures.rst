@@ -208,3 +208,85 @@ zval.u2.next 存的就是冲突元素在Bucket数组中的位置，所以查找�
 
 	//Print the class name
 	fprintf(stdout, "%s", class_entry->name);
+
+类的标准操作集合（handlers）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: c
+
+	struct _zend_object {
+		zend_refcounted_h gc;
+		uint32_t          handle; // TODO: may be removed ???
+		zend_class_entry *ce;
+		const zend_object_handlers *handlers;
+		HashTable        *properties;
+		zval              properties_table[1];
+	};
+
+	/* Used to call methods */
+	/* args on stack! */
+	/* Andi - EX(fbc) (function being called) needs to be initialized already in the INIT fcall opcode so that the parameters can be parsed the right way. We need to add another callback for this.
+	 */
+	typedef int (*zend_object_call_method_t)(zend_string *method, zend_object *object, INTERNAL_FUNCTION_PARAMETERS);
+	typedef union _zend_function *(*zend_object_get_method_t)(zend_object **object, zend_string *method, const zval *key);
+	typedef union _zend_function *(*zend_object_get_constructor_t)(zend_object *object);
+
+	/* Object maintenance/destruction */
+	typedef void (*zend_object_dtor_obj_t)(zend_object *object);
+	typedef void (*zend_object_free_obj_t)(zend_object *object);
+	typedef zend_object* (*zend_object_clone_obj_t)(zval *object);
+
+	/* Get class name for display in var_dump and other debugging functions.
+	 * Must be defined and must return a non-NULL value. */
+	typedef zend_string *(*zend_object_get_class_name_t)(const zend_object *object);
+
+	typedef int (*zend_object_compare_t)(zval *object1, zval *object2);
+	typedef int (*zend_object_compare_zvals_t)(zval *resul, zval *op1, zval *op2);
+
+	/* Cast an object to some other type
+	 */
+	typedef int (*zend_object_cast_t)(zval *readobj, zval *retval, int type);
+
+	/* updates *count to hold the number of elements present and returns SUCCESS.
+	 * Returns FAILURE if the object does not have any sense of overloaded dimensions */
+	typedef int (*zend_object_count_elements_t)(zval *object, zend_long *count);
+
+	typedef int (*zend_object_get_closure_t)(zval *obj, zend_class_entry **ce_ptr, union _zend_function **fptr_ptr, zend_object **obj_ptr);
+
+	typedef HashTable *(*zend_object_get_gc_t)(zval *object, zval **table, int *n);
+
+	typedef int (*zend_object_do_operation_t)(zend_uchar opcode, zval *result, zval *op1, zval *op2);
+
+	struct _zend_object_handlers {
+		/* offset of real object header (usually zero) */
+		int										offset;
+		/* general object functions */
+		zend_object_free_obj_t					free_obj;
+		zend_object_dtor_obj_t					dtor_obj;
+		zend_object_clone_obj_t					clone_obj;
+		/* individual object functions */
+		zend_object_read_property_t				read_property;
+		zend_object_write_property_t			write_property;
+		zend_object_read_dimension_t			read_dimension;
+		zend_object_write_dimension_t			write_dimension;
+		zend_object_get_property_ptr_ptr_t		get_property_ptr_ptr;
+		zend_object_get_t						get;
+		zend_object_set_t						set;
+		zend_object_has_property_t				has_property;
+		zend_object_unset_property_t			unset_property;
+		zend_object_has_dimension_t				has_dimension;
+		zend_object_unset_dimension_t			unset_dimension;
+		zend_object_get_properties_t			get_properties;
+		zend_object_get_method_t				get_method;
+		zend_object_call_method_t				call_method;
+		zend_object_get_constructor_t			get_constructor;
+		zend_object_get_class_name_t			get_class_name;
+		zend_object_compare_t					compare_objects;
+		zend_object_cast_t						cast_object;
+		zend_object_count_elements_t			count_elements;
+		zend_object_get_debug_info_t			get_debug_info;
+		zend_object_get_closure_t				get_closure;
+		zend_object_get_gc_t					get_gc;
+		zend_object_do_operation_t				do_operation;
+		zend_object_compare_zvals_t				compare;
+	};

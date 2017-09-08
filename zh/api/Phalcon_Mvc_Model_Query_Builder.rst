@@ -108,6 +108,18 @@ Gets the merge bind types
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setIndex** (*string* $index)
+
+Adds the index
+
+
+
+public *string*  **getIndex** ()
+
+Gets the index
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **compile** ()
 
 Compile the PHQL query
